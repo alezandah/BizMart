@@ -1,0 +1,30 @@
+<%= image_tag @shop.photo.url(:small) %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shop.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @shop.owner %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @shop.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @shop.location %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @shop.contact %>
+</p>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>
+<%= link_to 'Delete', shop_path(@shop), method: :delete, data: {confirm: "Are you sure?"} %>

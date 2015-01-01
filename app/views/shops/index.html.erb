@@ -1,0 +1,18 @@
+<h1>Listing shops</h1>
+
+
+
+    <% @shops.each do |shop| %>
+    <h1><%= link_to shop.name, shop %></h1><br>
+    <%= image_tag shop.photo.url(:small) %>
+        <!--<%= shop.owner %><br>
+        <%= shop.description %><br>
+        <%= shop.location %><br>
+        <%= shop.contact %><br>-->
+
+    <hr>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Shop', new_shop_path %>
