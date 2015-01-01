@@ -6,7 +6,11 @@
     <% @shops.each do |shop| %>
 
         <h1><%= link_to shop.name, shop %></h1><br>
-        <%= image_tag shop.photo.url(:small) %>
+        <%= if shop.photo?
+              image_tag shop.photo.url(:small), :class => "img-thumbnail"
+            else
+              image_tag("avatar.png", id: "img_prev", alt: "no image",:class => "img-thumbnail")
+            end %>
         <!--<%= shop.owner %>
         <%= shop.description %>
         <%= shop.location %>
@@ -21,3 +25,5 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_shop_path,
             :class => 'btn btn-primary' %>
+
+

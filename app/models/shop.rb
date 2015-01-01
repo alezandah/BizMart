@@ -1,4 +1,5 @@
 class Shop < ActiveRecord::Base
+  belongs_to :category
 
   has_attached_file :photo, :styles=> {:small=> "350x350"}
 

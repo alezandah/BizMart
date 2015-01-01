@@ -7,7 +7,11 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @shop.name %></dd>
   <p>
-    <%= image_tag @shop.photo.url(:small) %>
+    <%= if @shop.photo?
+          image_tag(@shop.photo , :class => "img-thumbnail")
+        else
+          image_tag("avatar.png", id: "img_prev", alt: "no image",:class => "img-thumbnail")
+        end %>
   </p>
   <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
   <dd><%= @shop.owner %></dd>

@@ -4,7 +4,12 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
+    if params[:category].blank?
     @shops = Shop.all.order("created_at DESC")
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @shops = Shop.where(category_id: @category_id).order("created_at DESC")
+      end
   end
 
   # GET /shops/1
@@ -69,6 +74,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:name, :owner, :description, :location, :contact, :photo)
+      params.require(:shop).permit(:name, :owner, :description, :location, :contact, :photo, :category_id)
     end
 end
