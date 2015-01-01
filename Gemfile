@@ -15,4 +15,5 @@ gem 'paperclip', '~> 4.2.1'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'devise', '~> 3.4.1'
 
