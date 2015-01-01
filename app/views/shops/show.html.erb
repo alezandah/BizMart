@@ -1,30 +1,31 @@
-<%= image_tag @shop.photo.url(:small) %>
+<%- model_class = Shop -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @shop.name %></dd>
+  <p>
+    <%= image_tag @shop.photo.url(:small) %>
+  </p>
+  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
+  <dd><%= @shop.owner %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @shop.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= @shop.location %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:contact) %>:</strong></dt>
+  <dd><%= @shop.contact %></dd>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @shop.owner %>
-</p>
+</dl>
 
-<p>
-  <strong>Description:</strong>
-  <%= @shop.description %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @shop.location %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @shop.contact %>
-</p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
-<%= link_to 'Delete', shop_path(@shop), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              shops_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_shop_path(@shop), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              shop_path(@shop),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
